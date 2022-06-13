@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="web development">
+        <meta name="keyword" content="html,css,javascript">
+        <meta name="author" content="pankaj baba">
+        <meta name="veiwport" content="width=device-width">
+        <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+        <style>
+   body{
+    background-color: gray;
+    height:500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   input{
+    margin: 10px 0px 0px 20px;
+   }
+   button{
+    margin-left: 110px;
+    margin-top: 20px;
+   }
+            </style>
+        </head>
+        <body>
+            <div>
+            <form action="#" method="get">
+                <p><caption>Signup Form</caption></p>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" /><br>
+                <label for="mb">Password:</label><br>
+                <input type="password" id="mb"/><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email"/><br>
+                <label for="address">Addres:</label><br>
+                <input type="address" id="address"/><br>
+                <button value="submit" id="signup">submit</button>
+                </form>
+                </div>
+                <script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBIPEbkQ-Lv2DZsrPAWmXF19l0fh6W9FUQ",
+  authDomain: "fir-676fc.firebaseapp.com",
+  projectId: "fir-676fc",
+  storageBucket: "fir-676fc.appspot.com",
+  messagingSenderId: "338000969934",
+  appId: "1:338000969934:web:c2b2b5d8696cb5073e509f",
+  measurementId: "G-WP5ZR2BFY0"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+let signup=document.getElementById('signup');
+let name=document.getElementById('name');
+let mb=document.getElementById('mb');
+let email=document.getElementById('email');
+
+let address=document.getElementById('address');
+signup.onclick=function(){
+    firebase.auth.createUserWithEmailAndPasswordAndMobileAndAddress(name.value,mb.value,email.value,address.value).then(function(res){
+    console.log(res);
+    })
+    .catch(function(error){
+        console.log(error);
+    })
+}
+                    </script>
+            </body>
+    </html>
